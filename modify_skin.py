@@ -1,5 +1,36 @@
 # -*- coding: UTF-8 -*-
 
+"""modify_skin
+
+Usage:
+  modify_skin.py (-h | --help)
+  modify_skin.py (-v | --version)
+  modify_skin.py (-p | --path) <path>
+  modify_skin.py [--str=<s>]
+
+Options:
+  -h --help         Show this screen.
+  -v --version      Show version.
+  -p --path         install path or i18n path
+  --str=<s>         add str [default: @]
+"""
+
+"""
+  modify_skin.py ship new <name>...
+  modify_skin.py ship <name> move <x> <y> [--speed=<kn>]
+  modify_skin.py ship shoot <x> <y>
+  modify_skin.py mine (set|remove) <x> <y> [--moored | --drifting]
+
+
+  --speed=<kn>  Speed in knots [default: 10].
+  --moored      Moored (anchored) mine.
+  --drifting    Drifting mine.
+
+if __name__ == '__main__':
+  modify_skin.py (-s | --str) [--str=<s>]
+  -s --str          add str [default: @]
+"""
+
 '''
 Last modified time: 2015-01-21 09:59:38
 Edit time: 2015-01-21 10:00:44
@@ -12,6 +43,8 @@ __author__ = 'caimaoy'
 import codecs
 import re
 import os
+
+from docopt import docopt
 
 
 def _rpl(s='@'):
@@ -60,4 +93,7 @@ def __scan_file(dir_path):
 
 
 if __name__ == '__main__':
-    __scan_file(r'C:\Program Files\Baidu Security\Baidu Antivirus\i18n')
+    # __scan_file(r'C:\Program Files\Baidu Security\Baidu Antivirus\i18n')
+    # print __doc__
+    arguments = docopt(__doc__, version='modify_skin 0.0.1')
+    print(arguments)
